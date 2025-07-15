@@ -104,7 +104,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
   }
 
   Future<void> _fetchComponentData() async {
-    final url = Uri.parse('https://192.168.1.12:5000/components/${widget.componentId}');
+    final url = Uri.parse('http://192.168.1.12:5000/components/${widget.componentId}');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
