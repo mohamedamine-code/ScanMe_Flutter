@@ -26,7 +26,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
 
   Future<void> _fetchComponentData() async {
     final url = Uri.parse(
-      'https://e0f5ca114c7f.ngrok-free.app/components/${widget.componentId}',
+      'https://backend-scanme.onrender.com/components/${widget.componentId}',
     );
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 5));
@@ -63,7 +63,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text('Component Id :',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),),
-            Text('${widget.componentId}',style: TextStyle(fontWeight: FontWeight.bold,color:Colors.white),),
+            Text('${widget.componentId}',style: TextStyle(fontSize:17,fontWeight: FontWeight.bold,color:Colors.white),),
           ],
         ),
         leading: IconButton(onPressed: (){
