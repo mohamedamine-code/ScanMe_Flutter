@@ -25,8 +25,10 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
   }
 
   Future<void> _fetchComponentData() async {
+    // LAN https://backend-scanme.onrender.com/ --> Local
+    // https://99aefeeed4a6.ngrok-free.app/components/${widget.componentId}
     final url = Uri.parse(
-      'https://backend-scanme.onrender.com/components/${widget.componentId}',
+      'http://192.168.1.13:5000/components/${widget.componentId}',
     );
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 5));
@@ -46,13 +48,14 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     } catch (e) {
       _showSnackBar('🔥 Error: $e');
       setState(() => isLoading = false);
+      print("errrorrrrr: $e");
     }
   }
 
   void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -62,70 +65,126 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('Component Id :',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),),
-            Text('${widget.componentId}',style: TextStyle(fontSize:17,fontWeight: FontWeight.bold,color:Colors.white),),
+            Text(
+              'Component Id :',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Text(
+              widget.componentId,
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
-        leading: IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>QRScannerScreen()));
-        }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => QRScannerScreen()),
+            );
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+        ),
         centerTitle: true,
         backgroundColor: Colors.indigo,
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : componentData == null
-              ? const Center(child: Text('Component not found.'))
-              : Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildDetail('📦 Name', componentData!['name']),
-                          const SizedBox(height: 12),
-                          _buildDetail('📂 Type', componentData!['type']),
-                          const SizedBox(height: 12),
-                          _buildDetail('🔢 Quantity', componentData!['quantity'].toString()),
-                          const SizedBox(height: 12),
-                          _buildDetail('📍 Location', componentData!['location']),
-                          const SizedBox(height: 20),
-                          if (componentData!['datasheet_url'] != null)
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                icon: const Icon(Icons.open_in_new,color:Colors.white),
-                                label: const Text('Open Datasheet',style: TextStyle(fontSize: 17,color:Colors.white)),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.indigo,
-                                  padding: const EdgeInsets.symmetric(vertical: 14),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                                onPressed: () async {
-                                  final url = componentData!['datasheet_url'];
-                                  
-                                  if (await canLaunchUrl(url)) {
-                                    await launchUrl(url);
-                                  } else {
-                                    _showSnackBar('Could not open the datasheet.');
-                                  }
-                                  _showSnackBar("Feature not implemented: $url");
-                                },
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+          ? const Center(child: Text('Component not found.'))
+          : Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Text('yoo'),
+              
+              
+              
+              
+              // Card(
+              //   elevation: 10,
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(16),
+              //   ),
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(15.0),
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         _buildDetail('🏢 Society Name', componentData!['name']),
+              //         const SizedBox(height: 12),
+              //         _buildDetail(
+              //           '🏬 Number of Floors',
+              //           componentData!['type'],
+              //         ),
+              //         const SizedBox(height: 12),
+              //         _buildDetail(
+              //           '⚙️ Technical Room Number',
+              //           componentData!['quantity'].toString(),
+              //         ),
+              //         const SizedBox(height: 12),
+              //         _buildDetail(
+              //           '🗄️ Cabinet Number',
+              //           componentData!['location'],
+              //         ),
+              //         const SizedBox(height: 12),
+              //         _buildDetail('🔀 Switcher', componentData!['location']),
+              //         const SizedBox(height: 12),
+              //         _buildDetail('🔌 Port', componentData!['location']),
+              //         const SizedBox(height: 20),
+              //         _buildDetail('📊 State Port', componentData!['location']),
+              //         const SizedBox(height: 20),
+              //         if (componentData!['datasheet_url'] != null)
+              //           SizedBox(
+              //             width: double.infinity,
+              //             child: ElevatedButton.icon(
+              //               icon: const Icon(
+              //                 Icons.open_in_new,
+              //                 color: Colors.white,
+              //               ),
+              //               label: const Text(
+              //                 'Open Datasheet',
+              //                 style: TextStyle(
+              //                   fontSize: 17,
+              //                   color: Colors.white,
+              //                 ),
+              //               ),
+              //               style: ElevatedButton.styleFrom(
+              //                 backgroundColor: Colors.indigo,
+              //                 padding: const EdgeInsets.symmetric(vertical: 14),
+              //                 shape: RoundedRectangleBorder(
+              //                   borderRadius: BorderRadius.circular(12),
+              //                 ),
+              //               ),
+              //               onPressed: () async {
+              //                 final rawUrl = componentData!['datasheet_url'];
+              //                 final url = Uri.parse(
+              //                   rawUrl.startsWith('http')
+              //                       ? rawUrl
+              //                       : 'https://$rawUrl',
+              //                 );
+
+              //                 if (await canLaunchUrl(url)) {
+              //                   await launchUrl(
+              //                     url,
+              //                     mode: LaunchMode.externalApplication,
+              //                   );
+              //                 } else {
+              //                   _showSnackBar('Could not open the datasheet.');
+              //                   print('Invalid or unsupported URL: $url');
+              //                 }
+              //               },
+              //             ),
+              //           ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+            ),
     );
   }
 
@@ -133,19 +192,23 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-              color: Colors.grey,
-            )),
+        Text(
+          label,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            color: Colors.grey,
+          ),
+        ),
         const SizedBox(height: 4),
-        Text(value,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            )),
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+        ),
       ],
     );
   }
