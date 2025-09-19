@@ -100,90 +100,71 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
           ? const Center(child: Text('Component not found.'))
           : Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Text('yoo'),
-              
-              
-              
-              
-              // Card(
-              //   elevation: 10,
-              //   shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(16),
-              //   ),
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(15.0),
-              //     child: Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         _buildDetail('🏢 Society Name', componentData!['name']),
-              //         const SizedBox(height: 12),
-              //         _buildDetail(
-              //           '🏬 Number of Floors',
-              //           componentData!['type'],
-              //         ),
-              //         const SizedBox(height: 12),
-              //         _buildDetail(
-              //           '⚙️ Technical Room Number',
-              //           componentData!['quantity'].toString(),
-              //         ),
-              //         const SizedBox(height: 12),
-              //         _buildDetail(
-              //           '🗄️ Cabinet Number',
-              //           componentData!['location'],
-              //         ),
-              //         const SizedBox(height: 12),
-              //         _buildDetail('🔀 Switcher', componentData!['location']),
-              //         const SizedBox(height: 12),
-              //         _buildDetail('🔌 Port', componentData!['location']),
-              //         const SizedBox(height: 20),
-              //         _buildDetail('📊 State Port', componentData!['location']),
-              //         const SizedBox(height: 20),
-              //         if (componentData!['datasheet_url'] != null)
-              //           SizedBox(
-              //             width: double.infinity,
-              //             child: ElevatedButton.icon(
-              //               icon: const Icon(
-              //                 Icons.open_in_new,
-              //                 color: Colors.white,
-              //               ),
-              //               label: const Text(
-              //                 'Open Datasheet',
-              //                 style: TextStyle(
-              //                   fontSize: 17,
-              //                   color: Colors.white,
-              //                 ),
-              //               ),
-              //               style: ElevatedButton.styleFrom(
-              //                 backgroundColor: Colors.indigo,
-              //                 padding: const EdgeInsets.symmetric(vertical: 14),
-              //                 shape: RoundedRectangleBorder(
-              //                   borderRadius: BorderRadius.circular(12),
-              //                 ),
-              //               ),
-              //               onPressed: () async {
-              //                 final rawUrl = componentData!['datasheet_url'];
-              //                 final url = Uri.parse(
-              //                   rawUrl.startsWith('http')
-              //                       ? rawUrl
-              //                       : 'https://$rawUrl',
-              //                 );
-
-              //                 if (await canLaunchUrl(url)) {
-              //                   await launchUrl(
-              //                     url,
-              //                     mode: LaunchMode.externalApplication,
-              //                   );
-              //                 } else {
-              //                   _showSnackBar('Could not open the datasheet.');
-              //                   print('Invalid or unsupported URL: $url');
-              //                 }
-              //               },
-              //             ),
-              //           ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildDetail('🏢 Society Name', componentData!['Society_Name']),
+                      const SizedBox(height: 12),
+                      _buildDetail(
+                        '🏬 Number of Floors',
+                        componentData!['Number_of_Floors'],
+                      ),
+                      const SizedBox(height: 12),
+                      _buildDetail(
+                        '⚙️ Technical Room Number',
+                        componentData!['Technical_Room_Number'].toString(),
+                      ),
+                      const SizedBox(height: 12),
+                      _buildDetail(
+                        '🗄️ Cabinet Number',
+                        componentData!['Cabinet_Number'],
+                      ),
+                      const SizedBox(height: 12),
+                      _buildDetail('🔀 Switcher', componentData!['Switcher']),
+                      const SizedBox(height: 12),
+                      _buildDetail('🔌 Port', componentData!['Port']),
+                      const SizedBox(height: 20),
+                      _buildDetail('📊 State Port', componentData!['State_Port'].toString()),
+                      const SizedBox(
+                        width: double.infinity,
+                        height: 20),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            icon: const Icon(
+                              Icons.open_in_new,
+                              color: Colors.white,
+                            ),
+                            label: const Text(
+                              'Open Datasheet',
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            onPressed: (){
+                            
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
             ),
     );
   }
