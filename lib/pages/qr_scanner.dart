@@ -32,6 +32,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
     }
   }
 
+   @override
+  void dispose() {
+  // Dispose controller asynchronously
+  controller.dispose();
+  super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +57,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
         ],
         leading: IconButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (_)=>HomeScreen()));
+          controller.dispose();
         }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
       ),
       body: Stack(
