@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:url_launcher/url_launcher.dart'; // Uncomment if you want to open URLs
@@ -135,32 +136,10 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
                       const SizedBox(
                         width: double.infinity,
                         height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            icon: const Icon(
-                              Icons.open_in_new,
-                              color: Colors.white,
-                            ),
-                            label: const Text(
-                              'Open Datasheet',
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.white,
-                              ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.indigo,
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            onPressed: (){
-                            
-                            },
-                          ),
-                        ),
+                        Mybutton(
+                          Data: 'Update Infromation',
+                          onPressed: (){},
+                        )
                     ],
                   ),
                 ),

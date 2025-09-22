@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scan_me/component/MyDrawer.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,9 +8,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      drawer: Mydrawer(),
       appBar: AppBar(
+        leading: Builder(
+          builder:(context)=> IconButton(onPressed: (){
+            Scaffold.of(context).openDrawer();
+          }, icon: Icon(Icons.menu),color:Colors.white,),
+        ),
         title: const Text(
           'SmartInventory',
           style: TextStyle(

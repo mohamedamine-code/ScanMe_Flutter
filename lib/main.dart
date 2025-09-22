@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:scan_me/pages/HomePage.dart';
+import 'package:scan_me/theme/const_theme.dart';
 
 void main() => runApp(const SmartInventoryApp());
 
@@ -13,7 +14,7 @@ class SmartInventoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SmartInventory',
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      theme: lightTheme,
       home: const HomeScreen(),
     );
   }
