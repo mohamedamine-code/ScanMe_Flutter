@@ -8,7 +8,7 @@ class Mybutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width - 20,
       child: ElevatedButton.icon(
         icon: const Icon(Icons.open_in_new, color: Colors.white),
         label: Text(
