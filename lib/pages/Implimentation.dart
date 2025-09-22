@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scan_me/component/MyButton.dart';
+import 'package:scan_me/component/MyDrawer.dart';
 import 'package:scan_me/component/MyTextFlied.dart';
 
 class Implimentation extends StatelessWidget {
@@ -8,11 +9,13 @@ class Implimentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Mydrawer(),
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
             onPressed: () {
               Scaffold.of(context).openDrawer();
+              print("ttt");
             },
             icon: Icon(Icons.menu),
             color: Colors.white,

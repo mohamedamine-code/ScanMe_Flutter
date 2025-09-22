@@ -11,7 +11,17 @@ class MyTextFlied extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           labelText: labelText,
-          border: OutlineInputBorder()
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.inversePrimary,
+            )
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              // width: 5.5,
+              color: Theme.of(context).colorScheme.inversePrimary,
+            )
+          )
         ),
       ),
     );

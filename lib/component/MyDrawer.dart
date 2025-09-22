@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scan_me/pages/HomePage.dart';
 import 'package:scan_me/pages/Implimentation.dart';
+import 'package:scan_me/pages/Viewdetails.dart';
 
 class Mydrawer extends StatelessWidget {
   const Mydrawer({super.key});
@@ -15,7 +16,7 @@ class Mydrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color: Theme.of(context).colorScheme.tertiary,
             ),
             child: Center(
               child: Text(
@@ -30,35 +31,52 @@ class Mydrawer extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => HomeScreen()),
-                  );
-                },
-                child: ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text("Scan QR"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => HomeScreen()),
+                    );
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text("Scan QR"),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => Implimentation()),
-                  );
-                },
-                child: ListTile(
-                  leading: Icon(Icons.addchart),
-                  title: Text("Implimentation"),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => Implimentation()),
+                    );
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.addchart),
+                    title: Text("Implimentation"),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => Viewdetails()),
+                    );
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.change_circle_rounded),
+                    title: Text("View details"),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ],
       ),

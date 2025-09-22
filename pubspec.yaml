@@ -38,6 +38,7 @@ dependencies:
   mobile_scanner:
   http:
   url_launcher:
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:
