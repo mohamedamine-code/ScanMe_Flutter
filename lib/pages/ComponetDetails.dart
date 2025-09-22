@@ -29,7 +29,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     // LAN https://backend-scanme.onrender.com/ --> Local
     // https://99aefeeed4a6.ngrok-free.app/components/${widget.componentId}
     final url = Uri.parse(
-      'http://192.168.1.13:5000/components/${widget.componentId}',
+      'https://b3e15afded98.ngrok-free.app/components/${widget.componentId}',
     );
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 5));
