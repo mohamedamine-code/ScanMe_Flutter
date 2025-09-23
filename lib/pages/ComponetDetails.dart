@@ -29,8 +29,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     // LAN https://backend-scanme.onrender.com/ --> Local
     // https://99aefeeed4a6.ngrok-free.app/components/${widget.componentId}
     final url = Uri.parse(
-      
-      'https://61dbb877236e.ngrok-free.app/components/${widget.componentId}',
+      'https://faf64fc29116.ngrok-free.app/components/${widget.componentId}',
     );
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 5));
@@ -112,7 +111,10 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildDetail('🏢 Society Name', componentData!['Society_Name']),
+                      _buildDetail(
+                        '🏢 Society Name',
+                        componentData!['Society_Name'],
+                      ),
                       const SizedBox(height: 12),
                       _buildDetail(
                         '🏬 Number of Floors',
@@ -133,14 +135,12 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
                       const SizedBox(height: 12),
                       _buildDetail('🔌 Port', componentData!['Port']),
                       const SizedBox(height: 20),
-                      _buildDetail('📊 State Port', componentData!['State_Port'].toString()),
-                      const SizedBox(
-                        width: double.infinity,
-                        height: 20),
-                        Mybutton(
-                          Data: 'Update Infromation',
-                          onPressed: (){},
-                        )
+                      _buildDetail(
+                        '📊 State Port',
+                        componentData!['State_Port'].toString(),
+                      ),
+                      const SizedBox(width: double.infinity, height: 20),
+                      Mybutton(Data: 'Update Infromation', onPressed: () {}),
                     ],
                   ),
                 ),
