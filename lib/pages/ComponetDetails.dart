@@ -43,10 +43,12 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
         setState(() => isLoading = false);
         _showSnackBar('❌ Failed to fetch component data.');
       }
-    } on TimeoutException {
-      _showSnackBar('⏱ Request timed out.');
-      setState(() => isLoading = false);
-    } catch (e) {
+    } 
+    // on TimeoutException {
+    //   _showSnackBar('⏱ Request timed out.');
+    //   setState(() => isLoading = false);
+    // } 
+    catch (e) {
       _showSnackBar('🔥 Error: $e');
       setState(() => isLoading = false);
       print("errrorrrrr: $e");
