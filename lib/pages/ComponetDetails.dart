@@ -29,7 +29,7 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     // LAN https://backend-scanme.onrender.com/ --> Local
     // https://99aefeeed4a6.ngrok-free.app/components/${widget.componentId}
     final url = Uri.parse(
-      'https://faf64fc29116.ngrok-free.app/components/${widget.componentId}',
+      'http://192.168.1.13:5000/components/${widget.componentId}',
     );
     try {
       final response = await http.get(url).timeout(const Duration(seconds: 5));
@@ -44,10 +44,10 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
         _showSnackBar('❌ Failed to fetch component data.');
       }
     } 
-    // on TimeoutException {
-    //   _showSnackBar('⏱ Request timed out.');
-    //   setState(() => isLoading = false);
-    // } 
+    on TimeoutException {
+      _showSnackBar('⏱ Request timed out.');
+      setState(() => isLoading = false);
+    } 
     catch (e) {
       _showSnackBar('🔥 Error: $e');
       setState(() => isLoading = false);
