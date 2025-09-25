@@ -40,7 +40,7 @@ void dispose() {
 }
 
 Future<void> addElement() async {
-  final url = "http://192.168.1.13:5000/components/insert-data";
+  final url = "https://backend-scanme-1.onrender.com/components/insert-data";
   final uri = Uri.parse(url);
 
   final response = await http.post(uri,headers:{'Content-Type': 'application/json'},body:jsonEncode({
@@ -56,7 +56,7 @@ Future<void> addElement() async {
 
 if (response.statusCode >= 200 && response.statusCode < 300) {
   ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(content: Text("Added successfully")),
+    const SnackBar(content: Text(" ✅  Added successfully")),
   );
 } else {
   // Show actual error
@@ -66,6 +66,13 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
     SnackBar(content: Text("Failed: $errorMsg")),
   );
 }
+  idController.clear();
+  Society_NameController.clear();
+  Number_FloorsController.clear();
+  Number_Technical_RoomController.clear();
+  Number_CabinetController.clear();
+  SwitcherController.clear();
+  PortController.clear();
 }
 
   @override
@@ -77,7 +84,7 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
           builder: (context) => IconButton(
             onPressed: () {
               Scaffold.of(context).openDrawer();
-              print("ttt");
+              
             },
             icon: Icon(Icons.menu),
             color: Colors.white,
@@ -95,30 +102,32 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
         backgroundColor: Colors.indigo,
       ),
       body: Center(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            MyTextFlied(labelText: "_id",controller: idController,),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Switcher",controller: SwitcherController),
-            const SizedBox(height: 20),
-            MyTextFlied(labelText: "Port",controller: PortController),
-            const SizedBox(height: 40),
-
-            Mybutton(Data: 'Submit', onPressed: () async{
-              await addElement();
-              print("pressed");
-            }),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              MyTextFlied(labelText: "_id",controller: idController,),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Switcher",controller: SwitcherController),
+              const SizedBox(height: 20),
+              MyTextFlied(labelText: "Port",controller: PortController),
+              const SizedBox(height: 40),
+          
+              Mybutton(Data: 'Submit', onPressed: () async{
+                await addElement();
+                print("pressed");
+              }),
+            ],
+          ),
         ),
       ),
     );

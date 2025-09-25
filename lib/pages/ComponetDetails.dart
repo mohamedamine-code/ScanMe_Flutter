@@ -29,17 +29,18 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     // LAN https://backend-scanme.onrender.com/ --> Local
     // https://99aefeeed4a6.ngrok-free.app/components/${widget.componentId}
     final url = Uri.parse(
-      'http://192.168.1.13:5000/components/${widget.componentId}',
+      'https://backend-scanme-1.onrender.com/components/${widget.componentId}',
     );
     try {
-      final response = await http.get(url).timeout(const Duration(seconds: 5));
+      final response = await http.get(url).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         setState(() {
           componentData = json.decode(response.body);
           isLoading = false;
         });
-      } else {
+      } 
+      else {
         setState(() => isLoading = false);
         _showSnackBar('❌ Failed to fetch component data.');
       }
