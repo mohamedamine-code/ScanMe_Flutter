@@ -20,7 +20,7 @@ class Mydrawer extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'SmartInventory',
+                'Smart Inventory',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
