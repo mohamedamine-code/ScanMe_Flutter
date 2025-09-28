@@ -71,6 +71,13 @@ class _HomeScreenState extends State<HomeScreen>
             height: 50,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              blurRadius: 15,
+                              offset: Offset(0, 10),
+                            ),
+              ],
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -151,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 40),
                       Text(
-                        'Welcome to SmartInventory',
+                        'Welcome to Smart Inventory',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w600,
