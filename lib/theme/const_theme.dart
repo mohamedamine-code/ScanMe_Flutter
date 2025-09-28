@@ -7,5 +7,6 @@ ThemeData lightTheme = ThemeData(
     secondary: Colors.grey.shade700,
     tertiary: Colors.indigo,
     inversePrimary: Colors.black,
+    // onSecondary: LinearGradient(colors: colors)
   )
 );
