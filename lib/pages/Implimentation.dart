@@ -79,56 +79,122 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Mydrawer(),
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
+      // appBar: AppBar(
+      //   leading: Builder(
+      //     builder: (context) => IconButton(
+      //       onPressed: () {
+      //         Scaffold.of(context).openDrawer();
               
-            },
-            icon: Icon(Icons.menu),
-            color: Colors.white,
+      //       },
+      //       icon: Icon(Icons.menu),
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      //   title: const Text(
+      //     'Implimentation',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontWeight: FontWeight.bold,
+      //       letterSpacing: 1.2,
+      //     ),
+      //   ),
+      //   centerTitle: true,
+      //   backgroundColor: Colors.indigo,
+      // ),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              "assets/img/pexels-jplenio-1103970.jpg",
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        title: const Text(
-          'Implimentation',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
+
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 50.0, horizontal: 8.0),
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 15,
+                  offset: Offset(0, 10),
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                Builder(
+                  builder: (context) => IconButton(
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    icon: const Icon(Icons.menu),
+                    // color: Colors.white,
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      'Smart Inventory',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.indigo,
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 20),
-              MyTextFlied(labelText: "_id",controller: idController,),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Switcher",controller: SwitcherController),
-              const SizedBox(height: 20),
-              MyTextFlied(labelText: "Port",controller: PortController),
-              const SizedBox(height: 40),
           
-              Mybutton(Data: 'Submit', onPressed: () async{
-                await addElement();
-                print("pressed");
-              }),
-            ],
+          Align(
+            alignment: Alignment(0, 0),
+            child: Card(
+              shadowColor: Colors.blueAccent,
+              elevation: 10,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(top:10.0,left: 10.0,right: 10.0),
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MyTextFlied(labelText: "_id",controller: idController,),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Switcher",controller: SwitcherController),
+                      const SizedBox(height: 20),
+                      MyTextFlied(labelText: "Port",controller: PortController),
+                      const SizedBox(height: 40),
+                  
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Mybutton(Data: 'Submit', onPressed: () async{
+                          await addElement();
+                          print("pressed");
+                        }),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

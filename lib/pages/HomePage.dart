@@ -58,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen>
       body: Stack(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: size.width,
+            height: size.height,
             child: Image.asset(
               "assets/img/pexels-jplenio-1103970.jpg",
               fit: BoxFit.cover,
