@@ -39,6 +39,7 @@ dependencies:
   http:
   url_launcher:
   font_awesome_flutter:
+  avatar_glow: ^3.0.1
 
 dev_dependencies:
   flutter_test:

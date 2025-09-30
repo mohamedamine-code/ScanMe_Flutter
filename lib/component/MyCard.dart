@@ -26,31 +26,37 @@ class _MycardState extends State<Mycard> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-              ],
+            Card(
+              elevation:10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                ],
+              ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-                Titletext(data: "Socity Name"),
-                Subtitletext(data: "Transtu"),
-              ],),
+            Card(
+              elevation: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                  Titletext(data: "Socity Name"),
+                  Subtitletext(data: "Transtu"),
+                ],),
+            ),
           ],
         ),
       ),

@@ -73,10 +73,10 @@ class _HomeScreenState extends State<HomeScreen>
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 15,
-                              offset: Offset(0, 10),
-                            ),
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 15,
+                  offset: Offset(0, 10),
+                ),
               ],
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
