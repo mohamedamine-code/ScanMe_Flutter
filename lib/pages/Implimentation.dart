@@ -157,38 +157,44 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
           
           Align(
             alignment: Alignment(0, 0),
-            child: Card(
-              shadowColor: Colors.blueAccent,
-              elevation: 10,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(top:10.0,left: 10.0,right: 10.0),
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MyTextFlied(labelText: "_id",controller: idController,),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Switcher",controller: SwitcherController),
-                      const SizedBox(height: 20),
-                      MyTextFlied(labelText: "Port",controller: PortController),
-                      const SizedBox(height: 40),
-                  
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: Mybutton(Data: 'Submit', onPressed: () async{
-                          await addElement();
-                          print("pressed");
-                        }),
-                      ),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Card(
+                shadowColor: Colors.blueAccent,
+                elevation: 10,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10.0,left: 15.0,right: 15.0),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 20,),
+                        MyTextFlied(labelText: "_id",controller: idController,),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Society Name",controller: Society_NameController,),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Number Floors",controller: Number_FloorsController),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Number Technical Room",controller: Number_Technical_RoomController),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Number Cabinet",controller:Number_CabinetController),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Switcher",controller: SwitcherController),
+                        const SizedBox(height: 20),
+                        MyTextFlied(labelText: "Port",controller: PortController),
+                        const SizedBox(height: 30),
+                    
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Mybutton(Data: 'Submit', onPressed: () async{
+                            await addElement();
+                            print("pressed");
+                          }),
+                        ),
+                        const SizedBox(height: 20,),
+              
+                      ],
+                    ),
                   ),
                 ),
               ),

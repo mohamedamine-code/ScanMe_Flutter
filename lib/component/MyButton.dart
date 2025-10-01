@@ -11,32 +11,45 @@ class Mybutton extends StatefulWidget {
 
 class _MybuttonState extends State<Mybutton> {
   double _scale = 1.0;
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTapDown:(_)=> setState(() {
-        _scale=0.95;
+      onTapDown: (_) => setState(() {
+        _scale = 0.95;
       }),
-      onTapUp: (_)=>setState(() {
-        _scale=1.0;
+      onTapUp: (_) => setState(() {
+        _scale = 1.0;
       }),
-      onTapCancel:()=>setState(() {
-        _scale=1.0;      
-        }),
+      onTapCancel: () => setState(() {
+        _scale = 1.0;
+      }),
       child: AnimatedScale(
-        duration: const Duration(milliseconds:100),
+        duration: const Duration(milliseconds: 100),
         scale: _scale,
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width - 20,
-          child: ElevatedButton.icon(
-            icon: const Icon(Icons.open_in_new, color: Colors.white),
-            label: Text(
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 5),
+                blurRadius: 5,
+                color: Colors.black.withOpacity(0.5),
+              ),
+            ],
+            borderRadius: BorderRadius.circular(12),
+            gradient: LinearGradient(colors: [Colors.indigo, Colors.blue]),
+          ),
+          width: double.infinity,
+          child: ElevatedButton(
+            // icon: const Icon(Icons.camera_alt, color: Colors.white),
+            child: Text(
               widget.Data,
-              style: TextStyle(fontSize: 17, color: Colors.white),
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.indigo,
-              padding: const EdgeInsets.symmetric(vertical: 14),
+              backgroundColor: Colors.transparent,
+              padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

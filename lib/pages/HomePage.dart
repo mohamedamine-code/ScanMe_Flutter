@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/component/MyDrawer.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
 
@@ -176,46 +177,16 @@ class _HomeScreenState extends State<HomeScreen>
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 40),
-                      Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0, 5),
-                              blurRadius: 5,
-                              color: Colors.black.withOpacity(0.5),
+                      Mybutton(
+                        Data: "Scan QR Code",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QRScannerScreen(),
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(12),
-                          gradient: LinearGradient(
-                            colors: [Colors.indigo, Colors.blue],
-                          ),
-                        ),
-                        width: double.infinity,
-                        child: ElevatedButton.icon(
-                          icon: const Icon(
-                            Icons.camera_alt,
-                            color: Colors.white,
-                          ),
-                          label: const Text(
-                            'Scan QR Code',
-                            style: TextStyle(fontSize: 18, color: Colors.white),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const QRScannerScreen(),
-                              ),
-                            );
-                          },
-                        ),
+                          );
+                        },
                       ),
                     ],
                   ),
