@@ -28,34 +28,40 @@ class _MycardState extends State<Mycard> {
           children: [
             Card(
               elevation:10,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                  ],
+                ),
               ),
             ),
             Card(
               elevation: 10,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                  Titletext(data: "Socity Name"),
-                  Subtitletext(data: "Transtu"),
-                ],),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                    Titletext(data: "Socity Name"),
+                    Subtitletext(data: "Transtu"),
+                  ],),
+              ),
             ),
           ],
         ),
