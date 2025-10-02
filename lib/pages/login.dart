@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:scan_me/pages/HomePage.dart';
 // import 'signin.dart';
 
 class LoginPage extends StatelessWidget {
@@ -80,7 +81,9 @@ class LoginPage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                         minimumSize: const Size(double.infinity, 48)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                    },
                     child: const Text('Login',
                         style: TextStyle(color: Colors.white, fontSize: 16)),
                   ),
