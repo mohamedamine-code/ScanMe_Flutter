@@ -3,6 +3,7 @@ import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/pages/HomePage.dart';
 import 'package:scan_me/pages/Implimentation.dart';
 import 'package:scan_me/pages/Viewdetails.dart';
+import 'package:scan_me/pages/login.dart';
 
 class Mydrawer extends StatelessWidget {
   const Mydrawer({super.key});
@@ -109,7 +110,7 @@ class Mydrawer extends StatelessWidget {
                 Data: "Logout",
                 onPressed: () {
                   // your logout function here
-                  Navigator.pop(context);
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>LoginPage()));
                 },
               ),
             )

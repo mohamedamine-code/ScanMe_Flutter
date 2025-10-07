@@ -2,6 +2,7 @@
 // This example uses: mobile_scanner for QR, http for API
 
 import 'package:flutter/material.dart';
+import 'package:scan_me/pages/HomePage.dart';
 import 'package:scan_me/pages/login.dart';
 import 'package:scan_me/theme/const_theme.dart';
 
@@ -15,7 +16,7 @@ class SmartInventoryApp extends StatelessWidget {
     return MaterialApp(
       title: 'SmartInventory',
       theme: lightTheme,
-      home: const LoginPage(),
+      home: const HomeScreen(),
     );
   }
 }

@@ -53,7 +53,10 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {},
                   icon:Icon(FontAwesomeIcons.google,color: Colors.black,),
                   label: const Text('Continue with Google',
-                      style: TextStyle(color: Colors.black87)),
+                  
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black87)),
                 ),
                 const SizedBox(height: 16),
                 TextField(

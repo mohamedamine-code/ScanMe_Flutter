@@ -6,6 +6,6 @@ class Subtitletext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(data,style: TextStyle(fontSize: 17,color: Colors.grey),);
+    return Text(data,style: TextStyle(fontWeight:FontWeight.bold,fontSize: 17,color: const Color.fromARGB(255, 52, 48, 48)),);
   }
 }
