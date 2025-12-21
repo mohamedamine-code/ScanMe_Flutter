@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/component/MyDrawer.dart';
+
 import 'package:scan_me/component/MyTextFlied.dart';
 
 class Implimentation extends StatefulWidget {
@@ -79,28 +79,26 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Mydrawer(),
-      // appBar: AppBar(
-      //   leading: Builder(
-      //     builder: (context) => IconButton(
-      //       onPressed: () {
-      //         Scaffold.of(context).openDrawer();
-              
-      //       },
-      //       icon: Icon(Icons.menu),
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      //   title: const Text(
-      //     'Implimentation',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.bold,
-      //       letterSpacing: 1.2,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.indigo,
-      // ),
+      appBar: AppBar(
+        title: Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      'Smart Inventory',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+      ),
+      
       body: Stack(
         children: [
           SizedBox(

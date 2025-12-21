@@ -1,12 +1,17 @@
-// SmartInventory Flutter App - Main Code Structure
-// This example uses: mobile_scanner for QR, http for API
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scan_me/pages/HomePage.dart';
-import 'package:scan_me/pages/login.dart';
 import 'package:scan_me/theme/const_theme.dart';
 
-void main() => runApp(const SmartInventoryApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Hide status bar and navigation bar
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  runApp(const SmartInventoryApp());
+}
 
 class SmartInventoryApp extends StatelessWidget {
   const SmartInventoryApp({super.key});
@@ -14,11 +19,11 @@ class SmartInventoryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SmartInventory',
+      title: 'Smart Inventory',
       theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system, // Follow system theme
       home: const HomeScreen(),
     );
   }
 }
-
-

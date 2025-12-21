@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
-// import 'package:url_launcher/url_launcher.dart'; // Uncomment if you want to open URLs
 
 class ComponentDetailScreen extends StatefulWidget {
   final String componentId;

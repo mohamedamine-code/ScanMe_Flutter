@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/component/MyDrawer.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
+import 'package:scan_me/theme/page_transition.dart';
+import 'package:scan_me/theme/app_spacing.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,8 +13,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _rotationController;
+  late AnimationController _scaleController;
 
   @override
   void initState() {
@@ -20,181 +23,223 @@ class _HomeScreenState extends State<HomeScreen>
     _rotationController = AnimationController(
       duration: const Duration(seconds: 4),
       vsync: this,
-    )..repeat(); // Makes it rotate continuously
+    )..repeat();
+
+    _scaleController = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true);
   }
 
   @override
   void dispose() {
     _rotationController.dispose();
+    _scaleController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       drawer: const Mydrawer(),
-      // appBar: AppBar(
-      //   leading: Builder(
-      //     builder: (context) => IconButton(
-      //       onPressed: () {
-      //         Scaffold.of(context).openDrawer();
-      //       },
-      //       icon: const Icon(Icons.menu),
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      //   title: const Text(
-      //     'SmartInventory',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //       fontWeight: FontWeight.bold,
-      //       letterSpacing: 1.2,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: const Color.fromARGB(255, 41, 94, 138),
-      // ),
-      body: Stack(
-        children: [
-          SizedBox(
-            width: size.width,
-            height: size.height,
-            child: Image.asset(
-              "assets/img/pexels-jplenio-1103970.jpg",
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 50.0, horizontal: 8.0),
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 15,
-                  offset: Offset(0, 10),
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                Builder(
-                  builder: (context) => IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: const Icon(Icons.menu),
-                    // color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'Smart Inventory',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Card(
-                shadowColor: Colors.blueAccent,
-                elevation: 10,
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Rotating QR Icon inside a circle
-                      const SizedBox(height: 45),
-                      Container(
-                        width: size.width * 0.6,
-                        height: size.width * 0.6,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.indigo, Colors.blue],
-                          ),
-                          // color: Colors.blue,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 15,
-                              offset: Offset(0, 10),
-                            ),
-                            BoxShadow(
-                              color: Colors.blue.withOpacity(0.5),
-                              blurRadius: 10,
-                              offset: Offset(0, 7),
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: RotationTransition(
-                            turns: _rotationController,
-                            child: Icon(
-                              Icons.qr_code_scanner,
-                              size: size.width * 0.4,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 40),
-                      Text(
-                        'Welcome to Smart Inventory',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade800,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        'Tap below to scan a QR code and manage your inventory easily.',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey.shade600,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 40),
-                      Mybutton(
-                        Data: "Scan QR Code",
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const QRScannerScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        elevation: 0,
+        title: Row(
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
+                  'Smart Inventory',
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.2,
                   ),
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: isDark
+                ? [Colors.grey.shade900, Colors.grey.shade800]
+                : [Colors.grey.shade50, Colors.white],
           ),
-        ],
+        ),
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Animated QR Circle
+                    ScaleTransition(
+                      scale: Tween<double>(begin: 1.0, end: 1.05)
+                          .animate(_scaleController),
+                      child: Container(
+                        width: size.width * 0.6,
+                        height: size.width * 0.6,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color(0xFF4F46E5),
+                              Color(0xFF3B82F6),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFF4F46E5).withOpacity(0.4),
+                              blurRadius: 30,
+                              spreadRadius: 5,
+                              offset: const Offset(0, 15),
+                            ),
+                            BoxShadow(
+                              color: const Color(0xFF3B82F6).withOpacity(0.3),
+                              blurRadius: 20,
+                              spreadRadius: 2,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            // Rotating icon
+                            RotationTransition(
+                              turns: _rotationController,
+                              child: Icon(
+                                Icons.qr_code_scanner,
+                                size: size.width * 0.35,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 60),
+
+                    // Welcome Text Section
+                    Column(
+                      children: [
+                        Text(
+                          'Welcome to Smart Inventory',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800,
+                            color: isDark ? Colors.white : Colors.grey.shade800,
+                            letterSpacing: 0.5,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 16),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg,
+                            vertical: AppSpacing.sm,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(AppSpacing.radiusLg),
+                            color: Theme.of(context).colorScheme.primary
+                                .withOpacity(0.1),
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.primary
+                                  .withOpacity(0.3),
+                            ),
+                          ),
+                          child: Text(
+                            'Scan QR codes to manage inventory',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: isDark
+                                  ? Colors.grey.shade300
+                                  : Colors.grey.shade700,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: 0.2,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 50),
+
+                    // CTA Button
+                    Mybutton(
+                      Data: "Start Scanning",
+                      icon: Icons.qr_code_scanner,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          SmoothPageRoute(
+                            page: const QRScannerScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Info Section
+                    Container(
+                      padding: const EdgeInsets.all(AppSpacing.lg),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+                        color: isDark
+                            ? Colors.grey.shade800.withOpacity(0.5)
+                            : Colors.blue.shade50,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.primary
+                              .withOpacity(0.2),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.info_outline,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 24,
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Text(
+                              'Open the menu to view implementation details and more options',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: isDark
+                                    ? Colors.grey.shade300
+                                    : Colors.grey.shade700,
+                                height: 1.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
