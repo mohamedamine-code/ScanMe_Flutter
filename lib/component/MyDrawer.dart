@@ -15,10 +15,10 @@ class Mydrawer extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.sm,
-        vertical: AppSpacing.md,
-      ),
+      // margin: const EdgeInsets.symmetric(
+      //   horizontal: AppSpacing.sm,
+      //   vertical: AppSpacing.md,
+      // ),
       height: MediaQuery.of(context).size.height - 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
@@ -60,7 +60,8 @@ class Mydrawer extends StatelessWidget {
                 ],
               ),
               child: Container(
-                padding: const EdgeInsets.all(AppSpacing.lg),
+                // padding: const EdgeInsets.all(AppSpacing.lg),
+                width: 400,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -94,25 +95,7 @@ class Mydrawer extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: AppSpacing.sm),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.md,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
-                      ),
-                      child: const Text(
-                        'v1.0.0',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                    
                   ],
                 ),
               ),
@@ -201,7 +184,7 @@ class Mydrawer extends StatelessWidget {
                                 Navigator.pop(context);
                                 Navigator.push(
                                   context,
-                                  SmoothPageRoute(page: LoginPage()),
+                                  SmoothPageRoute(page: const LoginPage()),
                                 );
                               },
                               child: const Text(

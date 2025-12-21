@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen>
                   'Smart Inventory',
                   style: TextStyle(
                     fontSize: 22,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Colors.black,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.2,
                   ),

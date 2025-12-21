@@ -20,6 +20,7 @@ class SmartInventoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smart Inventory',
+      
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system, // Follow system theme
