@@ -36,42 +36,7 @@ class CustomAppBarWithTheme extends StatelessWidget implements PreferredSizeWidg
         ),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.light_mode,
-                    size: 18,
-                    color: isDark ? Colors.grey.shade600 : Colors.amber,
-                  ),
-                  Switch(
-                    value: isDark,
-                    onChanged: (_) {
-                      AppThemeContext.toggleTheme();
-                    },
-                    activeColor: Colors.indigo,
-                    inactiveThumbColor: Colors.orange,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  Icon(
-                    Icons.dark_mode,
-                    size: 18,
-                    color: isDark ? Colors.indigo : Colors.grey.shade600,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        const _ThemeToggleButton(),
         if (actions != null) ...actions!,
       ],
     );
@@ -79,4 +44,51 @@ class CustomAppBarWithTheme extends StatelessWidget implements PreferredSizeWidg
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+/// Extracted theme toggle widget to prevent unnecessary rebuilds
+class _ThemeToggleButton extends StatelessWidget {
+  const _ThemeToggleButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.light_mode,
+                size: 18,
+                color: isDark ? Colors.grey.shade600 : Colors.amber,
+              ),
+              Switch(
+                value: isDark,
+                onChanged: (_) {
+                  AppThemeContext.toggleTheme();
+                },
+                activeColor: Colors.indigo,
+                inactiveThumbColor: Colors.orange,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              Icon(
+                Icons.dark_mode,
+                size: 18,
+                color: isDark ? Colors.indigo : Colors.grey.shade600,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
