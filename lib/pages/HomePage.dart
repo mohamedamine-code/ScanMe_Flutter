@@ -6,7 +6,9 @@ import 'package:scan_me/theme/page_transition.dart';
 import 'package:scan_me/theme/app_spacing.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final VoidCallback? onThemeToggle;
+
+  const HomeScreen({super.key, this.onThemeToggle});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -57,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen>
                   'Smart Inventory',
                   style: TextStyle(
                     fontSize: 22,
-                    color: Colors.black,
+                    color: isDark ? Colors.white : Colors.black,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.2,
                   ),
@@ -66,6 +68,46 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: isDark
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade200,
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.light_mode,
+                      size: 18,
+                      color: isDark ? Colors.grey.shade600 : Colors.amber,
+                    ),
+                    Switch(
+                      value: isDark,
+                      onChanged: (_) {
+                        widget.onThemeToggle?.call();
+                      },
+                      activeColor: Colors.indigo,
+                      inactiveThumbColor: Colors.orange,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Icon(
+                      Icons.dark_mode,
+                      size: 18,
+                      color: isDark ? Colors.indigo : Colors.grey.shade600,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(

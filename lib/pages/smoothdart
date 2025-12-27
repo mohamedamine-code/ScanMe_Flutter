@@ -1,0 +1,21 @@
+// lib/theme/page_transition.dart
+import 'package:flutter/material.dart';
+
+class SmoothPageRoute<T> extends PageRouteBuilder<T> {
+  final Widget page;
+
+  SmoothPageRoute({
+    required this.page,
+  }) : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            // Fade transition
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
+}
