@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:scan_me/component/MyButton.dart';
 import 'package:scan_me/component/MyDrawer.dart';
+import 'package:scan_me/component/CustomAppBarWithTheme.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
 import 'package:scan_me/theme/page_transition.dart';
 import 'package:scan_me/theme/app_spacing.dart';
 
 class HomeScreen extends StatefulWidget {
-  final VoidCallback? onThemeToggle;
-
-  const HomeScreen({super.key, this.onThemeToggle});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -48,66 +47,8 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       drawer: const Mydrawer(),
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        elevation: 0,
-        title: Row(
-          children: [
-            Expanded(
-              child: Center(
-                child: Text(
-                  'Smart Inventory',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: isDark ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: isDark
-                      ? Colors.grey.shade800
-                      : Colors.grey.shade200,
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.light_mode,
-                      size: 18,
-                      color: isDark ? Colors.grey.shade600 : Colors.amber,
-                    ),
-                    Switch(
-                      value: isDark,
-                      onChanged: (_) {
-                        widget.onThemeToggle?.call();
-                      },
-                      activeColor: Colors.indigo,
-                      inactiveThumbColor: Colors.orange,
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    Icon(
-                      Icons.dark_mode,
-                      size: 18,
-                      color: isDark ? Colors.indigo : Colors.grey.shade600,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+      appBar: CustomAppBarWithTheme(
+        title: 'Smart Inventory',
       ),
       body: Container(
         decoration: BoxDecoration(

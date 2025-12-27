@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:scan_me/pages/HomePage.dart';
 import 'package:scan_me/theme/const_theme.dart';
 import 'package:scan_me/services/theme_service.dart';
+import 'package:scan_me/theme/app_theme_context.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,8 @@ class _SmartInventoryAppState extends State<SmartInventoryApp> {
   void initState() {
     super.initState();
     _loadTheme();
+    // Set the global theme toggle callback
+    AppThemeContext.setThemeToggleCallback(_toggleTheme);
   }
 
   Future<void> _loadTheme() async {
@@ -63,7 +66,7 @@ class _SmartInventoryAppState extends State<SmartInventoryApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeMode,
-      home: HomeScreen(onThemeToggle: _toggleTheme),
+      home: const HomeScreen(),
     );
   }
 }

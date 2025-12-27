@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:scan_me/component/MyButton.dart';
+import 'package:scan_me/component/CustomAppBarWithTheme.dart';
 import 'package:scan_me/pages/qr_scanner.dart';
 
 class ComponentDetailScreen extends StatefulWidget {
@@ -60,38 +61,9 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              'Component Id :',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              widget.componentId,
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => QRScannerScreen()),
-            );
-          },
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.indigo,
+      appBar: CustomAppBarWithTheme(
+        title: 'Component ID: ${widget.componentId}',
+        centerTitle: false,
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

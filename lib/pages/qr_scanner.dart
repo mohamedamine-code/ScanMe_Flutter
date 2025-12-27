@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:scan_me/theme/app_theme_context.dart';
 import 'package:scan_me/pages/ComponetDetails.dart';
 import 'package:scan_me/pages/HomePage.dart';
 
@@ -94,6 +95,42 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
                 HapticFeedback.lightImpact();
                 controller.toggleTorch();
               },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey.shade800,
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.light_mode,
+                        size: 18,
+                        color: Colors.grey.shade600,
+                      ),
+                      Switch(
+                        value: Theme.of(context).brightness == Brightness.dark,
+                        onChanged: (_) {
+                          AppThemeContext.toggleTheme();
+                        },
+                        activeColor: Colors.indigo,
+                        inactiveThumbColor: Colors.orange,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      Icon(
+                        Icons.dark_mode,
+                        size: 18,
+                        color: Colors.indigo,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
           leading: IconButton(
