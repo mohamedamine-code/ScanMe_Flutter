@@ -48,7 +48,6 @@ class _ComponentDetailScreenState extends State<ComponentDetailScreen> {
     } catch (e) {
       _showSnackBar('🔥 Error: $e');
       setState(() => isLoading = false);
-      print("errrorrrrr: $e");
     }
   }
 
