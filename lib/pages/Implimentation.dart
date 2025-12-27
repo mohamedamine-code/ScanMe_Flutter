@@ -85,7 +85,7 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'Smart Inventory',
+                      '',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -109,54 +109,11 @@ if (response.statusCode >= 200 && response.statusCode < 300) {
               fit: BoxFit.cover,
             ),
           ),
-
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 50.0, horizontal: 8.0),
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 15,
-                  offset: Offset(0, 10),
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                Builder(
-                  builder: (context) => IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: const Icon(Icons.menu),
-                    // color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      'Smart Inventory',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
           
           Align(
             alignment: Alignment(0, 0),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
               child: Card(
                 shadowColor: Colors.blueAccent,
                 elevation: 10,

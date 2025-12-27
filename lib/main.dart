@@ -9,8 +9,13 @@ import 'package:scan_me/theme/app_theme_context.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Hide status bar and navigation bar
+  // Enable true fullscreen mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  
+  // Set preferred orientations (portrait only)
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  );
 
   runApp(const SmartInventoryApp());
 }
@@ -53,6 +58,7 @@ class _SmartInventoryAppState extends State<SmartInventoryApp> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return MaterialApp(
+        showSemanticsDebugger: false,
         home: Scaffold(
           body: Center(
             child: CircularProgressIndicator(),
@@ -62,6 +68,7 @@ class _SmartInventoryAppState extends State<SmartInventoryApp> {
     }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Smart Inventory',
       theme: lightTheme,
       darkTheme: darkTheme,

@@ -42,7 +42,7 @@ class Viewdetails extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      'Smart Inventory',
+                      '',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,

@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen>
       backgroundColor: Theme.of(context).colorScheme.surface,
       drawer: const Mydrawer(),
       appBar: CustomAppBarWithTheme(
-        title: 'Smart Inventory',
+        title: '',
       ),
       body: Container(
         decoration: BoxDecoration(
